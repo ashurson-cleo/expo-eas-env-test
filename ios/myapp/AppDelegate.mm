@@ -7,6 +7,7 @@
 #import <React/RCTConvert.h>
 
 #import <React/RCTAppSetupUtils.h>
+#import <RNBranch/RNBranch.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -42,6 +43,8 @@
   _bridgeAdapter = [[RCTSurfacePresenterBridgeAdapter alloc] initWithBridge:bridge contextContainer:_contextContainer];
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
+
+  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
 
   UIView *rootView = [self.reactDelegate createRootViewWithBridge:bridge moduleName:@"main" initialProperties:nil];
 
